@@ -10,7 +10,9 @@ GPIO27_PATH="/sys/class/gpio/gpio27/"
 
 COUNTER=1
 
-if [ ! -d $GPIO25_PATH ] || [ ! -d $GPIO26_PATH ] || [ ! -d $GPIO27_PATH ]; then
+# Check if the GPIO directories exist; if not 
+
+if [ ! -e $GPIO25_PATH ] || [ ! -e $GPIO26_PATH ] || [ ! -e $GPIO27_PATH ]; then
         
         echo $GPIO_25 > /sys/class/gpio/export
         echo "out" > /sys/class/gpio/gpio25/direction
@@ -24,7 +26,12 @@ if [ ! -d $GPIO25_PATH ] || [ ! -d $GPIO26_PATH ] || [ ! -d $GPIO27_PATH ]; then
         echo "out" > /sys/class/gpio/gpio27/direction
 fi
 
-# run loop ten times
+
+echo "out" > /sys/class/gpio/gpio25/direction
+echo "out" > /sys/class/gpio/gpio26/direction
+echo "out" > /sys/class/gpio/gpio27/direction
+
+# Run loop ten times
 
 while [ $COUNTER -le 10 ]; do
 
