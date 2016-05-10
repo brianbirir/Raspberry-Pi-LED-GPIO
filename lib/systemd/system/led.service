@@ -1,0 +1,10 @@
+[Unit]
+Description=LED Service
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/bin/sh /usr/local/bin/led.sh > /home/pi/led.log 2>&1
+
+[Install]
+WantedBy=multi-user.target
